@@ -8,12 +8,12 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   color: #111;
   overscroll-behavior: none;
 }
 
 body {
+  min-height: 100vh;
   background: 
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url("images/Background.png") center/cover no-repeat;
