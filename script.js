@@ -129,17 +129,22 @@ document.getElementById("faqWhatsapp").href = waLink(
 
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', function (e) {
-    // impede comportamento estranho de links vazios
-    e.preventDefault();
 
-    // remove flip dos outros cartões
-    document.querySelectorAll('.card').forEach(c => {
-      if (c !== card) {
-        c.classList.remove('is-flipped');
-      }
-    });
+    // Se ainda NÃO está rodado → faz flip e impede link
+    if (!card.classList.contains('is-flipped')) {
+      e.preventDefault();
 
-    // alterna estado do cartão clicado
-    card.classList.toggle('is-flipped');
+      // Fecha outros cartões
+      document.querySelectorAll('.card').forEach(c => {
+        if (c !== card) {
+          c.classList.remove('is-flipped');
+        }
+      });
+
+      card.classList.add('is-flipped');
+    }
+
+    // Se já está rodado → não faz preventDefault
+    // deixa o link abrir normalmente
   });
 });
