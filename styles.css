@@ -147,7 +147,10 @@ html {
   transition: transform 0.8s ease;
   transform-style: preserve-3d;
   z-index: 1;
-  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* FLIP */
@@ -169,6 +172,8 @@ html {
   border-radius: 18px;
   overflow: hidden;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .card-back {
