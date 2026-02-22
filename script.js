@@ -126,26 +126,31 @@ faqModal.addEventListener("click", (e) => {
 document.getElementById("faqWhatsapp").href = waLink(
   "Hi! I have a question about West Coastal Home Care."
 );
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-const isTouchDevice = window.matchMedia("(hover: none)").matches;
-
-if (isTouchDevice) {
+if (isTouch) {
   document.querySelectorAll('.card').forEach(card => {
+
     card.addEventListener('click', function (e) {
 
-      // Se ainda não está rodado → impede link e roda
+      // Se ainda não está rodado
       if (!card.classList.contains('is-flipped')) {
         e.preventDefault();
 
-        // Fecha os outros
+        // Fecha outros cartões
         document.querySelectorAll('.card').forEach(c => {
           c.classList.remove('is-flipped');
         });
 
         card.classList.add('is-flipped');
+
+      } else {
+        // Já está rodado → abre manualmente o link
+        const url = card.href;
+        window.open(url, '_blank');
       }
 
-      // Se já está rodado → deixa o link abrir normalmente
     });
+
   });
 }
