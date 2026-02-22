@@ -15,7 +15,7 @@ body, html {
 body {
   background: 
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("images/Background.png") center/cover no-repeat fixed;
+    url("images/Background.png") center/cover no-repeat;
 }
 
 .page {
