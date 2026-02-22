@@ -25,6 +25,7 @@ html {
 
 .page {
   min-height: 100vh;
+  transform: translateZ(0);
 }
 
 .header {
@@ -84,7 +85,6 @@ html {
   grid-template-columns: repeat(4, minmax(300px, 350px));
   justify-content: center;
   gap: 40px;
-  perspective: 1200px;
 }
 
 /* CARD */
@@ -93,7 +93,7 @@ html {
   width: 100%;
   aspect-ratio: 4 / 5;
   position:relative;
-  transform: translateZ(0);
+  perspective: 1200px;
 }
 
 /* Linha dourada base (fica enquanto houver hover) */
@@ -148,8 +148,6 @@ html {
   transform-style: preserve-3d;
   z-index: 1;
   transform-style: preserve-3d;
-  will-change: transform;
-  backface-visibility: hidden;
 }
 
 /* FLIP */
