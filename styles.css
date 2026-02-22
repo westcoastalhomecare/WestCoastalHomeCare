@@ -146,8 +146,14 @@ body {
 }
 
 /* FLIP */
-.card:hover .card-inner {
+.card.is-flipped .card-inner {
   transform: rotateY(180deg);
+}
+
+@media (hover: hover) {
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 /* FACES */

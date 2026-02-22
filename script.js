@@ -126,3 +126,20 @@ faqModal.addEventListener("click", (e) => {
 document.getElementById("faqWhatsapp").href = waLink(
   "Hi! I have a question about West Coastal Home Care."
 );
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', function (e) {
+    // impede comportamento estranho de links vazios
+    e.preventDefault();
+
+    // remove flip dos outros cartões
+    document.querySelectorAll('.card').forEach(c => {
+      if (c !== card) {
+        c.classList.remove('is-flipped');
+      }
+    });
+
+    // alterna estado do cartão clicado
+    card.classList.toggle('is-flipped');
+  });
+});
