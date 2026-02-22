@@ -10,12 +10,17 @@ body, html {
   padding: 0;
   height: 100%;
   color: #111;
+  overscroll-behavior: none;
 }
 
 body {
   background: 
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url("images/Background.png") center/cover no-repeat;
+}
+
+html {
+  touch-action: manipulation;
 }
 
 .page {
@@ -88,6 +93,7 @@ body {
   aspect-ratio: 4 / 5;
   perspective: 1200px;
   position:relative;
+  transform: translateZ(0);
 }
 
 /* Linha dourada base (fica enquanto houver hover) */
@@ -141,6 +147,9 @@ body {
   transition: transform 0.8s ease;
   transform-style: preserve-3d;
   z-index: 1;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* FLIP */
