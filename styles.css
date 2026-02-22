@@ -84,6 +84,7 @@ html {
   grid-template-columns: repeat(4, minmax(300px, 350px));
   justify-content: center;
   gap: 40px;
+  perspective: 1200px;
 }
 
 /* CARD */
@@ -91,7 +92,6 @@ html {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
-  perspective: 1200px;
   position:relative;
   transform: translateZ(0);
 }
