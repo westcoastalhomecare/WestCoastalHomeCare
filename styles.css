@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #111;
+}
+
+body {
+  background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("images/Background.png") center/cover no-repeat fixed;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  flex-direction: column; /* empilha logo e textos verticalmente */
+  align-items: center;    /* centra tudo horizontalmente */
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.header p {
+  font-size: 16px;
+  opacity: 0.85;
+  color: aliceblue;
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.main {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  flex: 1;   /* ← ESTA LINHA É A CHAVE */
+}
+
+.image-wrapper {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 80%;      /* escala conforme o container */
+  max-width: 300px; /* tamanho máximo para ecrãs grandes */
+  height: auto;
+  margin-bottom: 4px;
+}
+
+.bg-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CARD CONTAINER */
+/* GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(300px, 350px));
+  justify-content: center;
+  gap: 40px;
+}
+
+/* CARD */
+.card {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  perspective: 1200px;
+  position:relative;
+}
+
+/* Linha dourada base (fica enquanto houver hover) */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    #ffd700 50%,
+    transparent 60%
+  );
+  background-size: 250% 250%;
+  background-position: 100% 50%;
+  opacity: 0;
+  transition: 
+    opacity 0s ease,
+    background-position 1.2s ease;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card:hover::after {
+  opacity: 1;
+  background-position: 0% 50%;
+}
+
+@keyframes goldSweep {
+  0% {
+    background-position: -200% 0;
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 0.8;
+  }
+}
+
+
+
+/* INNER */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* FLIP */
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* FACES */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* IMAGENS */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 18px 16px 26px;
+  font-size: 14px;
+  opacity: 0.9;
+  color:aliceblue
+}
+
+/* FAQ button */
+.faq-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: none;
+  background: #111;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+  z-index: 50;
+}
+
+.faq-btn:hover {
+  background: #222;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 760px;
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.modal-subtitle {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.close-btn {
+  border: none;
+  background: #111;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 60vh;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.faq-item {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.faq-item h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.faq-item p {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.45;
+}
+
+.wa-btn {
+  margin-top: 14px;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.instagram-icon {
+  font-size: 28px;
+  background: radial-gradient(circle at 30% 107%, 
+    #fdf497 0%, #fdf497 5%, 
+    #fd5949 45%, 
+    #d6249f 60%, 
+    #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+
+.wa-btn:hover {
+  background: #222;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-inner {
+  aspect-ratio: 4 / 5;
+}
+
+}
