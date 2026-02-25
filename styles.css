@@ -33,6 +33,7 @@ html {
   flex-direction: column; /* empilha logo e textos verticalmente */
   align-items: center;    /* centra tudo horizontalmente */
   padding: 20px;
+  text-align: center;
 }
 
 .header h1 {
@@ -41,6 +42,7 @@ html {
 }
 
 .header p {
+  text-align: center;
   font-size: 16px;
   opacity: 0.85;
   color: aliceblue;
@@ -155,12 +157,12 @@ html {
 
 /* FLIP */
 .card.is-flipped .card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(179.999deg);
 }
 
 @media (hover: hover) {
   .card:hover .card-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(179.999deg);
   }
 }
 
@@ -195,6 +197,15 @@ html {
   font-size: 14px;
   opacity: 0.9;
   color:aliceblue
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }
 
 /* FAQ button */
